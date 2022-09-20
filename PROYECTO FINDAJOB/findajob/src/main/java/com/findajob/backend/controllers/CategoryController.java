@@ -22,8 +22,8 @@ public class CategoryController {
     //Metodo para consultar la tabla de category
 
     @GetMapping
-    public ResponseEntity<?> findall(){
-        return new ResponseEntity<>(categoryServices.findall(), HttpStatus.OK);
+    public ResponseEntity<?> findAll(){
+        return new ResponseEntity<>(categoryServices.findAll(), HttpStatus.OK);
 
     }
 

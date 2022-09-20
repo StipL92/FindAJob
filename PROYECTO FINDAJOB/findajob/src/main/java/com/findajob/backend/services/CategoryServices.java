@@ -17,7 +17,7 @@ public class CategoryServices {
     private CategoryConverter categoryConverter = new CategoryConverter();
 
     //Servicio que me permite consultas todas las categorias de la tabala categoria
-    public List<CategoryData> findall() {
+    public List<CategoryData> findAll() {
         return categoryConverter.toData(categoryRepository.findAll());
 
     }
