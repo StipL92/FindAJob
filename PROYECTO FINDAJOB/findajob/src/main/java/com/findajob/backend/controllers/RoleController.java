@@ -14,48 +14,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.findajob.backend.data.CategoryData;
-import com.findajob.backend.services.CategoryServices;
+import com.findajob.backend.data.RoleData;
+import com.findajob.backend.services.RoleServices;
 
 @RestController
-@RequestMapping(path = "/api/categories")
+@RequestMapping(path = "/api/roles")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class CategoryController {
+public class RoleController {
     
     @Autowired
-    private CategoryServices categoryServices;
+    private RoleServices roleServices;
 
-    //Metodo para registrar la tabla de category
+    //Metodo para registrar la tabla de role
     @PostMapping
-    public ResponseEntity<?> insert(@RequestBody CategoryData category){
-        return new ResponseEntity<>(categoryServices.insert(category), HttpStatus.CREATED);
+    public ResponseEntity<?> insert(@RequestBody RoleData role){
+        return new ResponseEntity<>(roleServices.insert(role), HttpStatus.CREATED);
     }
 
-    //Metodo para consultar la tabla de category
+    //Metodo para consultar la tabla de Role
     @GetMapping
     public ResponseEntity<?> findAll(){
-        return new ResponseEntity<>(categoryServices.findAll(), HttpStatus.OK);
-
+        return new ResponseEntity<>(roleServices.findAll(), HttpStatus.OK);
     }
 
-    //Metodo para consultar por categoria(id)
+    //Metodo para consultar por role(id)
     @GetMapping("{id}")
-    public ResponseEntity<?> findById(@PathVariable int id){
-        return new ResponseEntity<>(categoryServices.findById(id), HttpStatus.OK);
+    public ResponseEntity<?> findById(@PathVariable int id) {
+        return new ResponseEntity<>(roleServices.findById(id), HttpStatus.OK);
     }
 
     //Metodo para modificar-editar
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody CategoryData category){
-        return new ResponseEntity<>(categoryServices.update(category), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody RoleData role){
+        return new ResponseEntity<>(roleServices.update(role), HttpStatus.OK);
     }
 
     //Metodo para eliminar
     @DeleteMapping
-    public ResponseEntity<?> deleteById(@PathVariable int id){
-        return new ResponseEntity<>(categoryServices.deleteById(id), HttpStatus.OK);
+    public ResponseEntity<?> deleteById(@PathVariable int id) {
+        return new ResponseEntity<>(roleServices.deleteById(id), HttpStatus.OK);
     }
-
-
 
 }
