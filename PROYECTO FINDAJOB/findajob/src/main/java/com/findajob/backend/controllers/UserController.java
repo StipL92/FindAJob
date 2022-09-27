@@ -14,45 +14,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.findajob.backend.data.RoleData;
-import com.findajob.backend.services.RoleServices;
+import com.findajob.backend.data.UserData;
+import com.findajob.backend.services.UserServices;
 
 @RestController
-@RequestMapping(path = "/api/roles")
+@RequestMapping( path = "/api/users")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class RoleController {
+public class UserController {
     
     @Autowired
-    private RoleServices roleServices;
+    private UserServices userServices;
 
-    //Metodo para registrar la tabla de role
+    //Metodo para registrar la tabla de 
     @PostMapping
-    public ResponseEntity<?> insert(@RequestBody RoleData role){
-        return new ResponseEntity<>(roleServices.insert(role), HttpStatus.CREATED);
+    public ResponseEntity<?> insert(@RequestBody UserData user){
+        return new ResponseEntity<>(userServices.insert(user), HttpStatus.CREATED);
     }
 
-    //Metodo para consultar la tabla de Role
+    //Metodo para consultar la tabla de user
     @GetMapping
     public ResponseEntity<?> findAll(){
-        return new ResponseEntity<>(roleServices.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(userServices.findAll(), HttpStatus.OK);
     }
 
-    //Metodo para consultar por role(id)
+    //Metodo para consultar por user(id)
     @GetMapping("{id}")
-    public ResponseEntity<?> findById(@PathVariable int id) {
-        return new ResponseEntity<>(roleServices.findById(id), HttpStatus.OK);
+    public ResponseEntity<?> findById(@PathVariable int id){
+        return new ResponseEntity<>(userServices.findById(id), HttpStatus.OK);
     }
 
     //Metodo para modificar-editar
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody RoleData role){
-        return new ResponseEntity<>(roleServices.update(role), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody UserData user){
+        return new ResponseEntity<>(userServices.update(user), HttpStatus.OK);
     }
 
     //Metodo para eliminar
-    @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteById(@PathVariable int id) {
-        return new ResponseEntity<>(roleServices.deleteById(id), HttpStatus.OK);
+    @DeleteMapping ("{id}")
+    public ResponseEntity<?> deleteById(@PathVariable int id){
+        return new ResponseEntity<>(userServices.deleteById(id), HttpStatus.OK);
     }
-
 }

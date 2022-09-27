@@ -53,8 +53,9 @@ public class RoleServices {
         Optional<Role> role = roleRepository.findById(id);
         if (role.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Role does not exits!");
+        RoleData roleData = roleConverte.toData(role.get());
         roleRepository.deleteById(id);
-        return roleConverte.toData(role.get());
+        return roleData;
     }
 
 }

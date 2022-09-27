@@ -14,45 +14,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.findajob.backend.data.RoleData;
-import com.findajob.backend.services.RoleServices;
+import com.findajob.backend.data.ApplicationData;
+
+import com.findajob.backend.services.ApplicationService;
 
 @RestController
-@RequestMapping(path = "/api/roles")
+@RequestMapping(path = "/api/applications")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class RoleController {
+public class ApplicationController {
     
     @Autowired
-    private RoleServices roleServices;
+    private ApplicationService applicationService;
 
-    //Metodo para registrar la tabla de role
+    //Metodo para registrar en la tabla application
     @PostMapping
-    public ResponseEntity<?> insert(@RequestBody RoleData role){
-        return new ResponseEntity<>(roleServices.insert(role), HttpStatus.CREATED);
+    public ResponseEntity<?> insert(@RequestBody ApplicationData application) {
+        return new ResponseEntity<>(applicationService.insert(application), HttpStatus.CREATED);
     }
 
-    //Metodo para consultar la tabla de Role
+    //Metodo para consultar la tabla de application
     @GetMapping
-    public ResponseEntity<?> findAll(){
-        return new ResponseEntity<>(roleServices.findAll(), HttpStatus.OK);
+    public ResponseEntity<?> findAll() {
+        return new ResponseEntity<>(applicationService.findAll(), HttpStatus.OK);
     }
 
-    //Metodo para consultar por role(id)
+    //Metodo para consultar por application(id)
     @GetMapping("{id}")
-    public ResponseEntity<?> findById(@PathVariable int id) {
-        return new ResponseEntity<>(roleServices.findById(id), HttpStatus.OK);
+    public ResponseEntity<?> finById(@PathVariable int id) {
+        return new ResponseEntity<>(applicationService.findById(id), HttpStatus.OK);
     }
 
-    //Metodo para modificar-editar
+    //Metodo para modificar
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody RoleData role){
-        return new ResponseEntity<>(roleServices.update(role), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody ApplicationData category) {
+        return new ResponseEntity<>(applicationService.update(category), HttpStatus.OK);
     }
 
     //Metodo para eliminar
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteById(@PathVariable int id) {
-        return new ResponseEntity<>(roleServices.deleteById(id), HttpStatus.OK);
+        return new ResponseEntity<>(applicationService.deleteById(id), HttpStatus.OK);
     }
 
 }

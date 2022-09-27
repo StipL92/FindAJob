@@ -53,7 +53,8 @@ public class CategoryServices {
         Optional<Category> category = categoryRepository.findById(id);
         if (category.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category does not exits!");
+        CategoryData categoryData = categoryConverter.toData(category.get());
         categoryRepository.deleteById(id);
-        return categoryConverter.toData(category.get());
+        return categoryData;
     }
 }

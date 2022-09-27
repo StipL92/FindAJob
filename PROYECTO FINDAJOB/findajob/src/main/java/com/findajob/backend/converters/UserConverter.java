@@ -16,6 +16,7 @@ public class UserConverter extends Converter<User, UserData> {
         .password(object.getPassword())
         .mail(object.getEmail())
         .enable(object.isEnable())
+        .registration(object.getRegistration())
         .roles(roleConverter.toEntity(object.getRoles()))
         .build();
     }
@@ -29,6 +30,7 @@ public class UserConverter extends Converter<User, UserData> {
         .password(null)
         .email(object.getMail())
         .enable(object.isEnable())
+        .registration(object.getRegistration())
         .roles(roleConverter.toData(object.getRoles()))
         .build();
     }

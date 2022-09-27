@@ -51,7 +51,7 @@ public class CategoryController {
     }
 
     //Metodo para eliminar
-    @DeleteMapping
+    @DeleteMapping ("{id}")
     public ResponseEntity<?> deleteById(@PathVariable int id){
         return new ResponseEntity<>(categoryServices.deleteById(id), HttpStatus.OK);
     }
